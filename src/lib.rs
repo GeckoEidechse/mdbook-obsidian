@@ -2,6 +2,13 @@ use mdbook::book::Book;
 use mdbook::book::{BookItem, Chapter};
 use mdbook::errors::Error;
 use mdbook::preprocess::{Preprocessor, PreprocessorContext};
+use rust_embed::RustEmbed;
+
+mod callouts;
+
+#[derive(RustEmbed)]
+#[folder = "assets/"]
+pub struct Asset;
 
 /// The Obsidian preprocessor.
 pub struct Obsidian;
@@ -45,7 +52,8 @@ impl Preprocessor for Obsidian {
 }
 
 /// Apply to all chapters
-fn handle_chapter(_chapter: &mut Chapter) -> Result<(), Error> {
+fn handle_chapter(chapter: &mut Chapter) -> Result<(), Error> {
+    chapter.content = callouts::render(&chapter.content)?;
     // Add your additional syntax parsing here
 
     Ok(())
