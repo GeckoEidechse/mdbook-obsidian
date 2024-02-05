@@ -1,0 +1,11 @@
+[book]
+title = "mdbook-obsidian"
+authors = ["GeckoEidechse"]
+language = "en"
+multilingual = false
+src = "docs/src"
+
+[build]
+build-dir = "docs/book"
+
+[preprocessor.obsidian]
