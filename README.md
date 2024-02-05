@@ -9,6 +9,8 @@
 
 [mdBook](https://github.com/rust-lang/mdBook) preprocessor to render [Obsidian](https://obsidian.md/) specific syntax in mdBook.
 
+To see the preprocessor in action, check out [this rendered example book](https://geckoeidechse.github.io/mdbook-obsidian/).
+
 To see the list of existing and supported syntax, see [this GitHub issue](https://github.com/GeckoEidechse/mdbook-obsidian/issues/1).
 
 > ⚠️ WIP ⚠️
@@ -88,3 +90,4 @@ fn handle_chapter(chapter: &mut Chapter) -> Result<(), Error> {
 with a function that calls the corresponding parsing logic.
 
 In your parsing logic, use regex or any other methods to scan for the specific pattern of the syntax you want to support and replace it with the corresponding HTML code.
+
