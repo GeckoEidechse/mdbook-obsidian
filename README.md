@@ -10,3 +10,26 @@ To see the list of existing and supported syntax, see [this GitHub issue](https:
 > Contributions to expand the supported syntax are more than welcome <3
 >
 > If you'd like to take over maintainership or ownership of this crate, please get in touch via an issue in the GitHub repo of this crate.
+
+## Usage
+
+First, install the preprocessor:
+
+```bash
+cargo install mdbook-obsidian
+```
+
+Then, add the preprocessor to your `book.toml`:
+
+```toml
+[book]
+authors = ["Jill Doe"]
+language = "en"
+multilingual = false
+src = "src"
+title = "My awesome Book"
+
+# ADD THIS
+[preprocessor.obsidian]
+
+```
