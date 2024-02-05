@@ -1,5 +1,12 @@
 # mdbook-obsidian
 
+[![crates.io](https://img.shields.io/crates/v/mdbook-obsidian.svg)](https://crates.io/crates/mdbook-obsidian)
+[![MPL 2.0 LICENSE](https://img.shields.io/github/license/GeckoEidechse/mdbook-obsidian.svg)](LICENSE)
+[![docs.rs](https://docs.rs/mdbook-obsidian/badge.svg)](https://docs.rs/mdbook-obsidian)
+[![Build](https://github.com/GeckoEidechse/mdbook-obsidian/actions/workflows/build.yml/badge.svg)](https://github.com/GeckoEidechse/mdbook-obsidian/actions/workflows/build.yml)
+[![Test](https://github.com/GeckoEidechse/mdbook-obsidian/actions/workflows/test.yml/badge.svg)](https://github.com/GeckoEidechse/mdbook-obsidian/actions/workflows/test.yml)
+
+
 [mdBook](https://github.com/rust-lang/mdBook) preprocessor to render [Obsidian](https://obsidian.md/) specific syntax in mdBook.
 
 To see the list of existing and supported syntax, see [this GitHub issue](https://github.com/GeckoEidechse/mdbook-obsidian/issues/1).
