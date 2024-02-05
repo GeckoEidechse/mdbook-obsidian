@@ -1,0 +1,52 @@
+<style>
+.mdbook-obsidian-callouts {
+  padding: 8px 16px;
+  margin-bottom: 16px;
+  border-left: 0.25em solid var(--mdbook-obsidian-callouts-color);
+}
+
+.mdbook-obsidian-callouts>*:first-child {
+  margin-top: 0;
+}
+
+.mdbook-obsidian-callouts>*:last-child {
+  margin-bottom: 0;
+}
+
+.mdbook-obsidian-callouts-title {
+  display: flex;
+  font-weight: 600;
+  align-items: center;
+  line-height: 1;
+  color: var(--mdbook-obsidian-callouts-color);
+  text-transform: capitalize;
+}
+
+.mdbook-obsidian-callouts-icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  margin-right: 0.2em;
+  background-color: currentColor;
+  -webkit-mask: no-repeat center / 100%;
+  mask: no-repeat center / 100%;
+  -webkit-mask-image: var(--mdbook-obsidian-callouts-icon);
+  mask-image: var(--mdbook-obsidian-callouts-icon);
+}
+
+/* Icons from https://icon-sets.iconify.design/material-symbols */
+.mdbook-obsidian-callouts-info {
+  --mdbook-obsidian-callouts-color: rgb(9, 105, 218);
+  --mdbook-obsidian-callouts-icon: url('data:image/svg+xml,%3Csvg xmlns="http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg" width="24" height="24" viewBox="0 0 24 24"%3E%3Cpath fill="currentColor" d="M12 17q.425 0 .713-.288T13 16v-4q0-.425-.288-.712T12 11q-.425 0-.712.288T11 12v4q0 .425.288.713T12 17m0-8q.425 0 .713-.288T13 8q0-.425-.288-.712T12 7q-.425 0-.712.288T11 8q0 .425.288.713T12 9m0 13q-2.075 0-3.9-.788t-3.175-2.137q-1.35-1.35-2.137-3.175T2 12q0-2.075.788-3.9t2.137-3.175q1.35-1.35 3.175-2.137T12 2q2.075 0 3.9.788t3.175 2.137q1.35 1.35 2.138 3.175T22 12q0 2.075-.788 3.9t-2.137 3.175q-1.35 1.35-3.175 2.138T12 22m0-2q3.35 0 5.675-2.325T20 12q0-3.35-2.325-5.675T12 4Q8.65 4 6.325 6.325T4 12q0 3.35 2.325 5.675T12 20m0-8"%2F%3E%3C%2Fsvg%3E');
+}
+
+</style>
+<div class="mdbook-obsidian-callouts mdbook-obsidian-callouts-{kind}">
+  <p class="mdbook-obsidian-callouts-title">
+    <span class="mdbook-obsidian-callouts-icon"></span>
+    {kind}
+  </p>
+
+  {body}
+
+</div>
