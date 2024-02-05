@@ -2,13 +2,6 @@ use mdbook::book::Book;
 use mdbook::book::{BookItem, Chapter};
 use mdbook::errors::Error;
 use mdbook::preprocess::{Preprocessor, PreprocessorContext};
-use rust_embed::RustEmbed;
-
-mod callouts;
-
-#[derive(RustEmbed)]
-#[folder = "assets/"]
-pub struct Asset;
 
 /// The Obsidian preprocessor.
 pub struct Obsidian;
