@@ -1,0 +1,85 @@
+name: Test
+
+on: [push, pull_request]
+
+jobs:
+  format-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo/bin/
+            ~/.cargo/registry/index/
+            ~/.cargo/registry/cache/
+            ~/.cargo/git/db/
+            target/
+          key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
+      - name: Update local toolchain
+        run: |
+          rustup update
+          rustup component add rustfmt
+      - name: Toolchain info
+        run: |
+          rustc --version
+          cargo --version --verbose
+          cargo fmt --version
+      - name: Format
+        run: |
+          cargo fmt --check
+
+  clippy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo/bin/
+            ~/.cargo/registry/index/
+            ~/.cargo/registry/cache/
+            ~/.cargo/git/db/
+            target/
+          key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
+      - name: Update local toolchain and add clippy
+        run: |
+          rustup update
+          rustup component add clippy
+      - name: Toolchain info
+        run: |
+          rustc --version
+          cargo --version --verbose
+          cargo clippy --version
+      - name: Clippy check
+        run: |
+          cargo clippy --all-features --all-targets -- --no-deps --deny warnings
+
+  test:
+    strategy:
+      matrix:
+        runner: [ubuntu-latest, macos-latest, windows-latest]
+    env:
+      RUNNER: ${{ matrix.runner }}
+    runs-on: ${{ matrix.runner }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo/bin/
+            ~/.cargo/registry/index/
+            ~/.cargo/registry/cache/
+            ~/.cargo/git/db/
+            target/
+          key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
+      - name: Update local toolchain
+        run: |
+          rustup update
+      - name: Toolchain info
+        run: |
+          rustc --version
+          cargo --version --verbose
+      - name: Test
+        run: |
+          cargo test
