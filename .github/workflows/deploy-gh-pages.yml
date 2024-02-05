@@ -1,0 +1,21 @@
+name: Deploy mdBook
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup mdBook
+        uses: peaceiris/actions-mdbook@v1
+      - name: Install preprocessor # This should just re-use the one built by CI earlier
+        run: cargo install mdbook-obsidian
+      - run: mdbook build
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs/book/
