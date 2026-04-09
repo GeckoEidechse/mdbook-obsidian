@@ -2,7 +2,7 @@
 name = "mdbook-obsidian"
 version = "0.1.0"
 authors = ["GeckoEidechse"]
-edition = "2021"
+edition = "2024"
 
 description = "mdBook preprocessor to render Obsidian specific syntax"
 repository = "https://github.com/GeckoEidechse/mdbook-obsidian"
