@@ -1,7 +1,7 @@
-use mdbook::book::Book;
-use mdbook::book::{BookItem, Chapter};
-use mdbook::errors::Error;
-use mdbook::preprocess::{Preprocessor, PreprocessorContext};
+use mdbook_preprocessor::book::Book;
+use mdbook_preprocessor::book::{BookItem, Chapter};
+use mdbook_preprocessor::errors::{Error, Result};
+use mdbook_preprocessor::{Preprocessor, PreprocessorContext};
 use rust_embed::RustEmbed;
 
 mod callouts;
@@ -46,8 +46,8 @@ impl Preprocessor for Obsidian {
     }
 
     /// Check whether we support the specified renderer
-    fn supports_renderer(&self, renderer: &str) -> bool {
-        renderer == "html"
+    fn supports_renderer(&self, renderer: &str) -> Result<bool> {
+        Ok(renderer != "not-supported")
     }
 }
 

@@ -14,7 +14,7 @@ keywords = [ "mdbook", "preprocessor", "markdown", "obsidian" ]
 
 [dependencies]
 clap = { version = "4.5.13", features = ["derive"] }
-mdbook = "0.4.40"
+mdbook-preprocessor = "0.5.2"
 regex = "1.10.5"
 rust-embed = "8.5.0"
 semver = "1.0.23"

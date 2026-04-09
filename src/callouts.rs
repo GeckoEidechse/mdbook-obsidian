@@ -10,7 +10,7 @@ static RE: LazyLock<Regex> = LazyLock::new(|| {
 
 /// Uses regex to find [Obsidian callouts](https://help.obsidian.md/Editing+and+formatting/Callouts)
 /// and replaces them with appropriate HTML rendering
-pub fn render(content: &str) -> Result<String, mdbook::errors::Error> {
+pub fn render(content: &str) -> Result<String, mdbook_preprocessor::errors::Error> {
     let callouts = Asset::get("templates/callouts.html").expect("template not found");
     let callouts = std::str::from_utf8(callouts.data.as_ref())?;
     let content = RE.replace_all(content, |caps: &regex::Captures| {
