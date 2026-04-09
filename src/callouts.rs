@@ -1,14 +1,16 @@
+use std::sync::LazyLock;
+
 use super::Asset;
-use once_cell::sync::Lazy;
 use regex::Regex;
+
+static RE: LazyLock<Regex> = LazyLock::new(|| {
+    Regex::new(r"(?m)^> \[!(?P<kind>[^\]]+)\]\s*$(?P<body>(?:\n>.*)*)")
+        .expect("failed to parse regex")
+});
 
 /// Uses regex to find [Obsidian callouts](https://help.obsidian.md/Editing+and+formatting/Callouts)
 /// and replaces them with appropriate HTML rendering
 pub fn render(content: &str) -> Result<String, mdbook::errors::Error> {
-    static RE: Lazy<Regex> = Lazy::new(|| {
-        Regex::new(r"(?m)^> \[!(?P<kind>[^\]]+)\]\s*$(?P<body>(?:\n>.*)*)")
-            .expect("failed to parse regex")
-    });
     let callouts = Asset::get("templates/callouts.html").expect("template not found");
     let callouts = std::str::from_utf8(callouts.data.as_ref())?;
     let content = RE.replace_all(content, |caps: &regex::Captures| {
